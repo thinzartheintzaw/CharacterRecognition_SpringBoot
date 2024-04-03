@@ -31,19 +31,15 @@ Open a web browser and navigate to http://localhost:8080 to access the applicati
 
 # Telegram Bot Usage
 Bot Registration:
-
 Search for the Telegram bot by its username and initiate a chat. (Easyocr_123bot)
 
 Upload Image:
-
 Send an image containing characters to the bot for recognition.
 
 Character Recognition:
-
 The bot will process the uploaded image and recognize the characters present in it.
 
 Receive Results:
-
 The recognized text will be sent back to you in the Telegram chat.
 
 # Acknowledgements
