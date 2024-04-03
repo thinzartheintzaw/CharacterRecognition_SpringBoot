@@ -29,6 +29,23 @@ mvn spring-boot:run
 Access Application:
 Open a web browser and navigate to http://localhost:8080 to access the application.
 
+# Telegram Bot Usage
+Bot Registration:
+
+Search for the Telegram bot by its username and initiate a chat. (Easyocr_123bot)
+
+Upload Image:
+
+Send an image containing characters to the bot for recognition.
+
+Character Recognition:
+
+The bot will process the uploaded image and recognize the characters present in it.
+
+Receive Results:
+
+The recognized text will be sent back to you in the Telegram chat.
+
 # Acknowledgements
 This project was developed using Java Spring Boot framework.
 The character recognition functionality utilizes machine learning algorithms.
