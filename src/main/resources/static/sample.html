@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include Chart.js from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>OCR Evaluation</title>
+</head>
+<body>
+<div class="w-full">
+    <div class="mx-20 my-4">
+        <nav class="bg-white">
+            <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
+                <div class="flex justify-between items-center">
+                    <div class="text-2xl font-bold text-gray-800 md:text-3xl">
+                        <a href="#">EasyOCR</a>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row hidden md:block -mx-2">
+                    <a
+                            href="index.html"
+                            class="text-gray-800 rounded hover:bg-[#6A64F1] hover:text-white hover:font-medium py-2 px-2 md:mx-2"
+                    >Home</a
+                    >
+                    <a
+                            href="about.html"
+                            class="text-gray-800 rounded hover:bg-[#6A64F1] hover:text-white hover:font-medium py-2 px-2 md:mx-2"
+                    >About</a
+                    >
+                    <a
+                            href="contact.html"
+                            class="text-gray-800 rounded hover:bg-[#6A64F1] hover:text-white hover:font-medium py-2 px-2 md:mx-2"
+                    >Contact</a
+                    >
+                    <a
+                            href="#"
+                            class="rounded bg-[#6A64F1] text-gray-100 font-medium py-2 px-2 md:mx-2"
+                    >Evaluation</a
+                    >
+                </div>
+            </div>
+        </nav>
+        <div class="lg:py-10">
+            <h1
+                    class="mt-4 text-4xl font-bold text-black sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl"
+            >
+                    <span class="inline-block text-[#6A64F1]">Evaluation</span
+                    ><span class="block text-gray-500 text-2xl">OCR Evaluation</span>
+            </h1>
+            <div class="mt-4 mx-auto" style="width: 800px; height: 500px">
+                <canvas id="metricsChart" width="800px" height="500px"></canvas>
+            </div>
+            <div>
+                <label> Average LevenshteinDistance for all characters (128) is </label>
+                <p id="evaluationResult"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        evaluateOCR();
+    });
+
+    function evaluateOCR() {
+        fetch('/evaluate-ocr', {
+            method: 'POST'
+        })
+            .then(response => response.text())
+            .then(data => {
+
+                const metrics = data.split('\n');
+                const accuracy = parseFloat(metrics[0].split(': ')[1]);
+                const averageLevenshteinDistance = parseFloat(metrics[1].split(': ')[1]);
+                const precision = parseFloat(metrics[2].split(': ')[1]);
+                const recall = parseFloat(metrics[3].split(': ')[1]);
+                const f1score = parseFloat(metrics[4].split(': ')[1]);
+
+                document.getElementById('evaluationResult').innerText = averageLevenshteinDistance;
+                // Create a chart
+                const ctx = document.getElementById('metricsChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Accuracy', 'Precision', 'Recall', 'F1 Score'],
+                        datasets: [{
+                            label: 'Metrics',
+                            data: [accuracy, precision, recall, f1score],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+</body>
+</html>

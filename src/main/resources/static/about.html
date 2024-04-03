@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Capstone</title>
+  <style>
+    /* Define the style for the underline */
+    .underline-30::after {
+      content: "";
+      display: block;
+      width: 65px;
+      height: 3px; /* Adjust height as needed */
+      background-color: #6a64f1; /* Adjust color as needed */
+      margin: auto; /* Center the underline */
+      margin-top: 5px; /* Adjust distance from text as needed */
+    }
+  </style>
+</head>
+<body>
+<div class="w-full">
+  <div class="mx-20 my-4">
+    <nav class="bg-white">
+      <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
+        <div class="flex justify-between items-center">
+          <div class="text-2xl font-bold text-gray-800 md:text-3xl">
+            <a href="#">EasyOCR</a>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row hidden md:block -mx-2">
+          <a
+                  href="index.html"
+                  class="text-gray-800 rounded hover:bg-[#6A64F1] hover:text-white hover:font-medium py-2 px-2 md:mx-2"
+          >Home</a
+          >
+          <a
+                  href="about.html"
+                  class="rounded bg-[#6A64F1] text-gray-100 font-medium py-2 px-2 md:mx-2"
+          >About</a
+          >
+          <a
+                  href="contact.html"
+                  class="text-gray-800 rounded hover:bg-[#6A64F1] hover:text-white hover:font-medium py-2 px-2 md:mx-2"
+          >Contact</a
+          >
+<!--          <a-->
+<!--                  href="sample.html"-->
+<!--                  class="text-gray-800 rounded hover:bg-[#6A64F1] hover:text-white hover:font-medium py-2 px-2 md:mx-2"-->
+<!--          >Evaluation</a-->
+<!--          >-->
+        </div>
+      </div>
+    </nav>
+    <div class="relative overflow-hidden">
+      <!-- First Section -->
+      <div class="bg-white pt-10 pb-4 sm:pt-16 lg:overflow-hidden lg:pt-24">
+        <!-- Header -->
+
+
+        <h1
+                class="underline-30 mt-4 text-center text-5xl font-bold text-indigo-500 sm:mt-5 lg:mt-6"
+        >
+          About
+        </h1>
+        <!-- Landing Page -->
+        <div class="flex justify-between items-center mx-56 py-20 px-5">
+          <div class="w-1/2 px-12 flex items-center justify-center">
+            <img
+                    src="imagefolder/logo.png"
+                    alt="Img"
+                    class="w-auto max-h-[30rem]"
+            />
+          </div>
+          <div class="w-1/2 px-12">
+            <h2 class="text-5xl mb-4 font-semibold text-gray-800">
+              About Easy OCR
+            </h2>
+            <p class="text-gray-600 mt-4 text-justify">
+              EasyOCR is an innovative Optical Character Recognition (OCR)
+              application designed to simplify the process of extracting
+              text from images. Whether you need to digitize documents,
+              extract text from images, or convert scanned files into
+              editable text, EasyOCR provides a convenient solution.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Section -->
+      <div class="bg-whitepb-14 lg:overflow-hidden lg:pb-24">
+        <!-- Header -->
+        <h1
+                class="underline-30 mt-4 text-center text-5xl font-bold text-indigo-500 sm:mt-5 lg:mt-6"
+        >
+        OCR at glance
+        </h1>
+        <!-- Landing Page -->
+        <div class="flex justify-between items-center mx-56 py-20 px-5">
+          <div class="w-1/2 px-12">
+            <h2 class="text-5xl mb-4 font-semibold text-gray-800">
+              OCR
+            </h2>
+            <p class="text-gray-600 mt-4 text-justify">
+                OCR is sophisticated technology which convert image based text to processable text in different languages. In today's evolving world OCR extraction has become very much important to world leaders. From the job of content writing, content creation, feature extraction from the text of images is very much important. It is an automated process where various machine learning and AI models are used to achieve the goal.
+            </p>
+          </div>
+          <div class="w-1/2 px-12">
+            <img
+                    src="https://www.emprenderconactitud.com/img/fidelizamas.png"
+                    alt="Img"
+                    class="w-auto max-h-[30rem]"
+            />
+          </div>
+        </div>
+      </div>
+        <!-- Third Section -->
+        <div class="bg-whitepb-14 lg:overflow-hidden lg:pb-24">
+            <!-- Header -->
+
+            <h1
+                    class="underline-30 mt-4 text-center text-5xl font-bold text-indigo-500 sm:mt-5 lg:mt-6"
+            >
+                How it works
+            </h1>
+            <!-- Landing Page -->
+            <div class="flex justify-between items-center mx-56 py-20 px-5">
+                <div class="w-1/2 px-12 flex items-center justify-center">
+                    <img
+                            src="imagefolder/logo.png"
+                            alt="Img"
+                            class="w-auto max-h-[30rem]"
+                    />
+                </div>
+                <div class="w-1/2 px-12">
+                    <h2 class="text-5xl mb-4 font-semibold text-gray-800">
+                        Steps
+                    </h2>
+                    <p class="text-gray-600 mt-4 text-justify">
+                        <b> Upload Image:</b> Simply upload the image containing the text you want to extract. <br>
+                        <b> Choose Language:</b> Choose the language (English, Myanmar). <br>
+                        <b> Process Text:</b> Our OCR engine will analyze the image and extract the text automatically. <br>
+                        <b> Review and Copy:</b> Review the extracted text and make any necessary copy for further work. <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

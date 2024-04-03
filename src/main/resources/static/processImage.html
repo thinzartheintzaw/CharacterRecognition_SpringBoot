@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Capstone</title>
+</head>
+<body>
+<div class="w-full">
+    <div class="mx-20 my-4">
+        <nav class="bg-white">
+            <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
+                <div class="flex justify-between items-center">
+                    <div class="text-2xl font-bold text-gray-800 md:text-3xl">
+                        <a href="#">EasyOCR</a>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row hidden md:block -mx-2">
+                    <a
+                            href="index.html"
+                            class="rounded bg-[#6A64F1] text-gray-100 font-medium py-2 px-2 md:mx-2"
+                    >Home</a
+                    >
+                    <a
+                            href="about.html"
+                            class="text-gray-800 rounded hover:bg-[#6A64F1] hover:text-white hover:font-medium py-2 px-2 md:mx-2"
+                    >About</a
+                    >
+                    <a
+                            href="contact.html"
+                            class="text-gray-800 rounded hover:bg-[#6A64F1] hover:text-white hover:font-medium py-2 px-2 md:mx-2"
+                    >Contact</a
+                    >
+<!--                    <a-->
+<!--                            href="sample.html"-->
+<!--                            class="text-gray-800 rounded hover:bg-[#6A64F1] hover:text-white hover:font-medium py-2 px-2 md:mx-2"-->
+<!--                    >Evaluation</a-->
+<!--                    >-->
+                </div>
+            </div>
+        </nav>
+        <div class="grid grid-cols-2 gap-2 my-4">
+            <div class="mx-auto w-full max-w-[650px] bg-white">
+                <div class="py-6 px-9">
+                    <div class="mb-6 pt-4">
+                        <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+                            Upload Image
+                        </label>
+
+                        <!-- Drag and Drop Area -->
+                        <div
+                                id="drag-area"
+                                class="mb-8 rounded-md border border-2 border-dashed border-[#e0e0e0]"
+                        >
+                            <input
+                                    type="file"
+                                    name="image"
+                                    id="file"
+                                    class="sr-only"
+                                    accept="image/gif, image/jpeg, image/png"
+                                    onchange="generateImage(this)"
+                            />
+                            <label
+                                    for="file"
+                                    class="relative flex min-h-[200px] items-center justify-center p-12 text-center"
+                            >
+                                <div>
+                      <span
+                              class="mb-2 block text-xl font-semibold text-[#07074D]"
+                      >
+                        Drop file here
+                      </span>
+                                    <span
+                                            class="mb-2 block text-base font-medium text-[#6B7280]"
+                                    >
+                        Or
+                      </span>
+                                    <span
+                                            class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
+                                    >
+                        Browse
+                      </span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Display Uploaded Image -->
+                        <div id="uploaded-image-area" class="hidden">
+                  <span
+                          class="bg-red-500 w-6 h-6 p-1 rounded-md text-right"
+                          onclick="removeImage()"
+                  >
+                    <svg
+                            class="w-4 h-4 text-slate-50"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                    >
+                      <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </span>
+                            <img
+                                    id="uploaded-image"
+                                    src="#"
+                                    alt="Uploaded image"
+                                    class="items-center"
+                            />
+                        </div>
+                    </div>
+
+                    <label
+                            for="language_selector"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                    >Select language</label
+                    >
+                    <select
+                            id="language_selector"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            disabled
+                    >
+                        <option value="" selected>Choose language</option>
+                        <option value="mya">Myanmar</option>
+                        <option value="eng">English</option>
+                        <!--<option value="jpn+eng">Japan</option>
+                        <option value="grc+eng">Greek</option> <-->
+                      <!--  <option value="hin+eng">Hindi</option> -->
+
+                    </select>
+
+                    <div class="mt-4">
+                        <button
+                                id="process-button"
+                                class="hover:shadow-form w-full rounded-md bg-gray-200 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                                onclick="processImage()"
+                                disabled
+                        >
+                            Process Image
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-auto w-full max-w-[650px] bg-white">
+                <div class="py-6 px-9">
+                    <div class="mb-6 pt-4">
+                        <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+                            Processed Text
+                        </label>
+
+                        <!-- Transformed Text -->
+                        <div
+                                class="px-4 py-3 bg-gray-100 rounded-md relative"
+                        >
+                            <p id="processedOutput" class="pr-6">
+                                <!-- Content of the div goes here -->
+                                Transformed Text will be shown here...
+                            </p>
+                            <!-- Copy button -->
+                            <button
+                                    id="copyButton"
+                                    class="absolute top-2 right-2 px-2 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600"
+                            >
+                                <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        class="w-5 h-5"
+                                >
+                                    <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                                    ></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
