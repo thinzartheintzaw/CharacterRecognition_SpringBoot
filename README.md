@@ -1,12 +1,20 @@
 # CharacterRecognition_SpringBoot
 
 # Overview
-This is a character recognition system developed using Java Spring Boot. It provides a user-friendly interface for recognizing characters from images. The system utilizes machine learning algorithms to accurately identify characters and returns the recognized text to the user.
+This is a character recognition system developed using Java Spring Boot, integrated with a Telegram bot. It provides a user-friendly interface for recognizing characters from images, accessible both through a web interface and a Telegram bot. The system utilizes machine learning algorithms to accurately identify characters and returns the recognized text to the user.
 
 # Features
-Image Upload: Users can upload images containing characters for recognition.
-Character Recognition: Utilizes machine learning models to recognize characters from images.
-Text Output: Displays the recognized text to the user.
+Web Interface: 
+Users can upload images containing characters for recognition through a web interface.
+
+Telegram Bot:
+Integration with a Telegram bot allows users to upload images and receive character recognition results directly in their Telegram chats.
+
+Character Recognition:
+Utilizes machine learning models to recognize characters from images.
+
+Text Output:
+Displays the recognized text to the user.
 
 # Installation
 Clone the Repository:
